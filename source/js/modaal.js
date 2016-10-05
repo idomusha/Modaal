@@ -1,83 +1,83 @@
 /*!
-	Modaal - accessible modals - v0.3.1
-	by Humaan, for all humans.
-	http://humaan.com
+ Modaal - accessible modals - v0.3.1
+ by Humaan, for all humans.
+ http://humaan.com
  */
 /**
-	Modaal jQuery Plugin : Accessible Modals
+ Modaal jQuery Plugin : Accessible Modals
 
-	==== General Options ===
-	type (string) 					: ajax, inline, image, iframe, confirm. Defaults to 'inline'
-	animation (string) 				: Fade, expand, down, up. Defaults to 'fade'
-	after_callback_delay (integer)	: Specify a delay value for the after open callbacks. This is necessary because with the bundled animations
-										have a set duration in the bundled CSS. Specify a delay of the same amount as the animation duration in so
-										more accurately fire the after open/close callbacks. Defaults 350, does not apply if animation is 'none',
-										after open callbacks are dispatched immediately
+ ==== General Options ===
+ type (string) 					: ajax, inline, image, iframe, confirm. Defaults to 'inline'
+ animation (string) 				: Fade, expand, down, up. Defaults to 'fade'
+ after_callback_delay (integer)	: Specify a delay value for the after open callbacks. This is necessary because with the bundled animations
+ have a set duration in the bundled CSS. Specify a delay of the same amount as the animation duration in so
+ more accurately fire the after open/close callbacks. Defaults 350, does not apply if animation is 'none',
+ after open callbacks are dispatched immediately
 
-	is_locked (boolean)				: Set this to true to disable closing the modal via keypress or clicking the background. Beware that if
-										type != 'confirm' there will be no interface to dismiss the modal if is_locked = true, you'd have to
-										programmatically arrange to dismiss the modal. Confirm modals are always locked regardless of this option
-										Defaults to false
+ is_locked (boolean)				: Set this to true to disable closing the modal via keypress or clicking the background. Beware that if
+ type != 'confirm' there will be no interface to dismiss the modal if is_locked = true, you'd have to
+ programmatically arrange to dismiss the modal. Confirm modals are always locked regardless of this option
+ Defaults to false
 
-	hide_close (boolean)			: Set this to true to hide the close modal button. Key press and overlay click will still close the modal.
-										This method is best used when you want to put a custom close button inside the modal container space.
+ hide_close (boolean)			: Set this to true to hide the close modal button. Key press and overlay click will still close the modal.
+ This method is best used when you want to put a custom close button inside the modal container space.
 
-	background (string)				: Background overlay style. Defaults to '#000'
-	overlay_opacity (float) 		: Background overlay transparency. Defaults to 0.8
-	overlay_close (boolean)			: Set this to false if you want to disable click to close on overlay background.
+ background (string)				: Background overlay style. Defaults to '#000'
+ overlay_opacity (float) 		: Background overlay transparency. Defaults to 0.8
+ overlay_close (boolean)			: Set this to false if you want to disable click to close on overlay background.
 
-	accessible_title (string)		: Accessible title. Default 'Dialog Window'
-	start_open (boolean)			: Set this to true to launch the Modaal window immediately on page open
-	fullscreen (boolean)			: Set this to true to make the modaal fill the entire screen, false will default to own width/height attributes.
-	custom_class (string)			: Fill in this string with a custom class that will be applied to the outer most modal wrapper.
+ accessible_title (string)		: Accessible title. Default 'Dialog Window'
+ start_open (boolean)			: Set this to true to launch the Modaal window immediately on page open
+ fullscreen (boolean)			: Set this to true to make the modaal fill the entire screen, false will default to own width/height attributes.
+ custom_class (string)			: Fill in this string with a custom class that will be applied to the outer most modal wrapper.
 
-	width (integer)					: Desired width of the modal. Required for iframe type. Defaults to undefined //TODO
-	height (integer)				: Desired height of the modal. Required for iframe type. Defaults to undefined //TODO
+ width (integer)					: Desired width of the modal. Required for iframe type. Defaults to undefined //TODO
+ height (integer)				: Desired height of the modal. Required for iframe type. Defaults to undefined //TODO
 
-	background_scroll (boolean)		: Set this to true to enable the page to scroll behind the open modal.
+ background_scroll (boolean)		: Set this to true to enable the page to scroll behind the open modal.
 
-    should_open (boolean|function)  : Boolean or closure that returns a boolean to determine whether to open the modal or not.
+ should_open (boolean|function)  : Boolean or closure that returns a boolean to determine whether to open the modal or not.
 
-	close_text						: String for close button text. Available for localisation and alternative languages to be used.
-	close_aria_label				: String for close button aria-label attribute (value that screen readers will read out). Available for localisation and alternative languages to be used.
+ close_text						: String for close button text. Available for localisation and alternative languages to be used.
+ close_aria_label				: String for close button aria-label attribute (value that screen readers will read out). Available for localisation and alternative languages to be used.
 
-	=== Events ===
-	before_open (function) 			: Callback function executed before modal is opened
-	after_open (function)			: Callback function executed after modal is opened
-	before_close (function)			: Callback function executed before modal is closed
-	after_close (function)			: Callback function executed after modal is closed
-	source (function(element, src))	: Callback function executed on the default source, it is intended to transform the
-										source (href in an AJAX modal or iframe). The function passes in the triggering element
-										as well as the default source depending of the modal type. The default output of the
-										function is an untransformed default source.
-
-
-	=== Confirm Options & Events ===
-	confirm_button_text (string)	: Text on the confirm button. Defaults to 'Confirm'
-	confirm_cancel_button_text (string) : Text on the confirm modal cancel button. Defaults to 'Cancel'
-	confirm_title (string)			: Title for confirm modal. Default 'Confirm Title'
-	confirm_content (string)		: HTML content for confirm message
-	confirm_callback (function)		: Callback function for when the confirm button is pressed as opposed to cancel
-	confirm_cancel_callback (function) : Callback function for when the cancel button is pressed
+ === Events ===
+ before_open (function) 			: Callback function executed before modal is opened
+ after_open (function)			: Callback function executed after modal is opened
+ before_close (function)			: Callback function executed before modal is closed
+ after_close (function)			: Callback function executed after modal is closed
+ source (function(element, src))	: Callback function executed on the default source, it is intended to transform the
+ source (href in an AJAX modal or iframe). The function passes in the triggering element
+ as well as the default source depending of the modal type. The default output of the
+ function is an untransformed default source.
 
 
-	=== Gallery Options & Events ===
-	gallery_active_class (string)	: Active class applied to the currently active image or image slide in a gallery 'gallery_active_item'
-	before_image_change (function)	: Callback function executed before the image slide changes in a gallery modal. Default function( current_item, incoming_item )
-	after_image_change (function)	: Callback function executed after the image slide changes in a gallery modal. Default function ( current_item )
+ === Confirm Options & Events ===
+ confirm_button_text (string)	: Text on the confirm button. Defaults to 'Confirm'
+ confirm_cancel_button_text (string) : Text on the confirm modal cancel button. Defaults to 'Cancel'
+ confirm_title (string)			: Title for confirm modal. Default 'Confirm Title'
+ confirm_content (string)		: HTML content for confirm message
+ confirm_callback (function)		: Callback function for when the confirm button is pressed as opposed to cancel
+ confirm_cancel_callback (function) : Callback function for when the cancel button is pressed
 
 
-	=== AJAX Options & Events ===
-	loading_content (string)		: HTML content for loading message. Default 'Loading &hellip;'
-	loading_class (string)			: Class name to be applied while content is loaded via AJAX. Default 'is_loading'
-	ajax_error_class (string)		: Class name to be applied when content has failed to load. Default is 'modaal-error'
-	ajax_success (function)		 	: Callback for when AJAX content is loaded in
+ === Gallery Options & Events ===
+ gallery_active_class (string)	: Active class applied to the currently active image or image slide in a gallery 'gallery_active_item'
+ before_image_change (function)	: Callback function executed before the image slide changes in a gallery modal. Default function( current_item, incoming_item )
+ after_image_change (function)	: Callback function executed after the image slide changes in a gallery modal. Default function ( current_item )
 
 
-	=== SOCIAL CONTENT ===
-	instagram_id (string)			: Unique photo ID for an Instagram photo.
+ === AJAX Options & Events ===
+ loading_content (string)		: HTML content for loading message. Default 'Loading &hellip;'
+ loading_class (string)			: Class name to be applied while content is loaded via AJAX. Default 'is_loading'
+ ajax_error_class (string)		: Class name to be applied when content has failed to load. Default is 'modaal-error'
+ ajax_success (function)		 	: Callback for when AJAX content is loaded in
 
-*/
+
+ === SOCIAL CONTENT ===
+ instagram_id (string)			: Unique photo ID for an Instagram photo.
+
+ */
 ( function( $ ) {
 
 	var modaal_loading_spinner = '<div class="modaal-loading-spinner"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>'
@@ -300,11 +300,11 @@
 			var wrap_class = (self.options.type == 'video') ? 'modaal-video-wrap' : 'modaal-content';
 
 			/*
-				modaal-start_none : fully hidden via display:none;
-				modaal-start_fade : hidden via opacity:0
-				modaal-start_slidedown : ...
+			 modaal-start_none : fully hidden via display:none;
+			 modaal-start_fade : hidden via opacity:0
+			 modaal-start_slidedown : ...
 
-			*/
+			 */
 			var animation_class;
 			switch ( self.options.animation ) {
 				case 'fade' :
@@ -349,29 +349,33 @@
 			//var build_markup = '<div class="modaal-wrapper modaal-start_fade' + igClass + '" id="' + self.scope.id + '"><div class="modaal-outer-wrapper"><div class="modaal-inner-wrapper">';
 			var build_markup = '<div class="modaal-wrapper modaal-' + self.options.type + animation_class + igClass + fullscreen_class + self.options.custom_class + '" id="' + self.scope.id + '"><div class="modaal-outer-wrapper"><div class="modaal-inner-wrapper">';
 
-					// hide if video
-					if (self.options.type != 'video') {
-						build_markup += '<div class="modaal-container"' + dimensionsStyle + '>';
-					}
+			// hide if video
+			if (self.options.type != 'video') {
+				build_markup += '<div class="modaal-container"' + dimensionsStyle + '>';
+			}
 
-					// add the guts of the content
-					build_markup +=	'<div class="' + wrap_class + ' modaal-focus" aria-hidden="false" aria-label="' + self.options.accessible_title + ' (Press escape to close)" role="dialog">';
+			// add the guts of the content
+			build_markup +=	'<div class="' + wrap_class + ' modaal-focus';
+			if (self.options.type != 'inline') {
+				build_markup += ' modaal-loading';
+			}
+			build_markup += '" aria-hidden="false" aria-label="' + self.options.accessible_title + ' (Press escape to close)" role="dialog">';
 
-							// If it's inline type, we want to clone content instead of dropping it straight in
-							if (self.options.type == 'inline') {
-								build_markup += '<div class="modaal-content-container"></div>';
-							} else {
-								// Drop in the content if it's not inline
-								build_markup +=	content;
-							}
+			// If it's inline type, we want to clone content instead of dropping it straight in
+			if (self.options.type == 'inline') {
+				build_markup += '<div class="modaal-content-container"></div>';
+			} else {
+				// Drop in the content if it's not inline
+				build_markup +=	content;
+			}
 
-					// close wrap_class
-					build_markup += '</div>' + self.scope.close_btn;
+			// close wrap_class
+			build_markup += '</div>' + self.scope.close_btn;
 
-					// hide if video
-					if (self.options.type != 'video') {
-						build_markup += '</div>';
-					}
+			// hide if video
+			if (self.options.type != 'video') {
+				build_markup += '</div>';
+			}
 
 			// close off modaal-wrapper
 			build_markup +=	'</div></div></div>';
@@ -386,6 +390,16 @@
 
 			// Trigger overlay show (which triggers modal show)
 			self.modaal_overlay('show');
+
+			if (self.options.type != 'inline') {
+				// NProgress (default loader) : start
+				if (NProgress !== undefined && typeof NProgress === 'object') {
+					NProgress.configure({showBar: false});
+					NProgress.start();
+				} else {
+					console.info('Modaal: NProgress is not installed.');
+				}
+			}
 		},
 
 		// Create Basic Inline Modal
@@ -435,8 +449,19 @@
 						var target = $('#' + self.scope.id + ' .modaal-content-container');
 						if ( target.length > 0) {
 							// add HTML into target region
-							target.removeClass( self.options.loading_class );
-							target.html(content);
+
+							// NProgress (default loader) : start
+							if (NProgress !== undefined && typeof NProgress === 'object') {
+								NProgress.configure({ showBar: false });
+								NProgress.done();
+							} else {
+								console.info('Modaal: NProgress is not installed.');
+							}
+
+							target
+								.removeClass( self.options.loading_class )
+								.html(content)
+								.parent().removeClass('modaal-loading');
 
 							// now trigger an instagram refresh
 							window.instgrm.Embeds.process();
@@ -448,8 +473,20 @@
 						// now set location for new content
 						var target = $('#' + self.scope.id + ' .modaal-content-container');
 						if ( target.length > 0) {
-							target.removeClass( self.options.loading_class ).addClass( self.options.ajax_error_class );
-							target.html(content);
+
+							// NProgress (default loader) : start
+							if (NProgress !== undefined && typeof NProgress === 'object') {
+								NProgress.configure({ showBar: false });
+								NProgress.done();
+							} else {
+								console.info('Modaal: NProgress is not installed.');
+							}
+
+							target
+								.removeClass( self.options.loading_class )
+								.addClass( self.options.ajax_error_class )
+								.html(content)
+								.parent().removeClass('modaal-loading');
 						}
 					}
 				});
@@ -484,8 +521,17 @@
 					// content fetch is successful so push it into markup
 					var target = $('#' + self.scope.id).find('.modaal-content-container');
 					if ( target.length > 0){
-						target.removeClass( self.options.loading_class );
-						target.html( data );
+
+						// NProgress (default loader) : end
+						if (NProgress !== undefined && typeof NProgress === 'object') {
+							NProgress.done();
+							NProgress.configure({ showBar: true });
+						}
+
+						target
+							.removeClass( self.options.loading_class )
+							.html(data)
+							.parent().removeClass('modaal-loading');
 
 						self.options.ajax_success.call(self, target);
 					}
@@ -498,8 +544,18 @@
 
 					var target = $('#' + self.scope.id + ' .modaal-content-container');
 					if ( target.length > 0){
-						target.removeClass( self.options.loading_class ).addClass( self.options.ajax_error_class );
-						target.html( 'Content could not be loaded. Please check the source and try again.' );
+
+						// NProgress (default loader) : end
+						if (NProgress !== undefined && typeof NProgress === 'object') {
+							NProgress.done();
+							NProgress.configure({ showBar: true });
+						}
+
+						target
+							.removeClass( self.options.loading_class )
+							.addClass( self.options.ajax_error_class )
+							.html( 'Content could not be loaded. Please check the source and try again.' )
+							.parent().removeClass('modaal-loading');
 					}
 				}
 			});
@@ -512,13 +568,13 @@
 			var content;
 
 			content = '<div class="modaal-content-container">' +
-					'<h1 id="modaal-title">' + self.options.confirm_title + '</h1>' +
-					'<div class="modaal-confirm-content">' + self.options.confirm_content + '</div>' +
-						'<div class="modaal-confirm-wrap">' +
-							'<button type="button" class="modaal-confirm-btn modaal-ok" aria-label="Confirm">' + self.options.confirm_button_text + '</button>' +
-							'<button type="button" class="modaal-confirm-btn modaal-cancel" aria-label="Cancel">' + self.options.confirm_cancel_button_text + '</button>' +
-						'</div>' +
-					'</div>' +
+				'<h1 id="modaal-title">' + self.options.confirm_title + '</h1>' +
+				'<div class="modaal-confirm-content">' + self.options.confirm_content + '</div>' +
+				'<div class="modaal-confirm-wrap">' +
+				'<button type="button" class="modaal-confirm-btn modaal-ok" aria-label="Confirm">' + self.options.confirm_button_text + '</button>' +
+				'<button type="button" class="modaal-confirm-btn modaal-cancel" aria-label="Cancel">' + self.options.confirm_cancel_button_text + '</button>' +
+				'</div>' +
+				'</div>' +
 				'</div>';
 
 			// now push content into markup
@@ -614,7 +670,7 @@
 					modaal_image_markup += '<div class="modaal-gallery-item gallery-item-' + i + is_active + '" aria-label="' + aria_label + '">' +
 						'<img src="' + gallery[i].url + '" alt=" " style="width:100%">' +
 						gallery[i].desc +
-					'</div>';
+						'</div>';
 				}
 
 				// close off the markup for the gallery and add next/previous buttons
@@ -640,7 +696,7 @@
 				modaal_image_markup = '<div class="modaal-gallery-item is_active" aria-label="' + aria_label + '">' +
 					'<img src="' + this_img_src + '" alt=" " style="width:100%">' +
 					this_img_alt +
-				'</div>';
+					'</div>';
 			}
 
 			// Update content variable
